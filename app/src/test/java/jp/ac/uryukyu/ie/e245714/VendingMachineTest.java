@@ -10,13 +10,15 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 
 class VendingMachineTest {
+   
+
     @Test
-    void stockTest(){
+    void selectTest(){
         var drinks = new ArrayList<Drink>();
 
         Drink cola = new Drink("コーラ",180,5);
         drinks.add(cola);
-        
+            
         VendingMachine vendingMachine = new VendingMachine(500);
 
         vendingMachine.print(drinks);
@@ -24,10 +26,28 @@ class VendingMachineTest {
         vendingMachine.select(1,drinks);
         vendingMachine.select(1,drinks);
         vendingMachine.select(1,drinks);
+        
+        int expectedStock1 = 2;
 
-        int expectedStock = 2;
+        assertEquals(expectedStock1,cola.getStock());
 
-        assertEquals(expectedStock,cola.getStock());
+    }
 
+    @Test
+    void replenishTest(){
+        var drinks = new ArrayList<Drink>();
+
+        Drink cola = new Drink("コーラ",180,5);
+        drinks.add(cola);
+            
+        VendingMachine vendingMachine = new VendingMachine(500);
+
+        vendingMachine.print(drinks);
+
+        vendingMachine.replenish(8,1,drinks);
+
+        int expectedStock2 = 13;
+
+        assertEquals(expectedStock2,cola.getStock());
     }
 }

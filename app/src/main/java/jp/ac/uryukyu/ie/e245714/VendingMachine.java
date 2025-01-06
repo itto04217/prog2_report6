@@ -41,4 +41,10 @@ public class VendingMachine {
             System.out.println("お金も足りていないし、売り切れています。");
         }
     }
+
+    public void replenish(int honsuu,int i,ArrayList<Drink> drinks){
+        int newStock = drinks.get(i-1).getStock() + honsuu;
+        drinks.get(i-1).setStock(newStock);
+        System.out.println(i+"番目の商品"+drinks.get(i-1).getName()+"を"+honsuu+"本、補充しました。");
+    }
 }
