@@ -15,20 +15,22 @@ public class Main {
         
         System.out.println("*お金も足りており、在庫も残っている場合");
         VendingMachine vendingMachine1 = new VendingMachine(500);
-        vendingMachine1.print(drinks);
-        vendingMachine1.select(3,drinks);
+        vendingMachine1.printDrinks(drinks);
+        vendingMachine1.buy(3,drinks);
 
         System.out.println("*お金が足りていない場合");
         VendingMachine vendingMachine2 = new VendingMachine(50);
-        vendingMachine2.select(3,drinks);
+        vendingMachine2.buy(3,drinks);
 
         System.out.println("*在庫がなく売り切れている場合");
         VendingMachine vendingMachine3 = new VendingMachine(500);
-        vendingMachine3.select(2,drinks);
+        vendingMachine3.buy(2,drinks);
 
         System.out.println("*お金も足りておらず、売り切れている場合");
         VendingMachine vendingMachine4 = new VendingMachine(30);
-        vendingMachine4.select(2,drinks);
-       
+        vendingMachine4.buy(2,drinks);
+
+        System.out.println("*飲み物の補充");
+        vendingMachine3.replenish(7,2,drinks);
     }
 }
